@@ -263,7 +263,10 @@ const Booking: React.FC = () => {
             <h2 className="step-heading">3. Payment via GCash</h2>
             <p className="step-subheading">
               Send your payment and upload the proof.
+              <p>GCASH number: 092172example</p>
+              <p>GCASH name: hello world</p>
             </p>
+            
 
             <div className="review-summary">
               <h3>Booking Summary</h3>
