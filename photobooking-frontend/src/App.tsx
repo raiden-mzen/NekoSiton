@@ -6,6 +6,8 @@ import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Booking from "./pages/Booking";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 
 
 function App() {
@@ -19,8 +21,10 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
         {/* Add more pages later */}
-        {/* <Route path="/contact" element={<Contact />} /> */}
+        
       </Routes>
 
       <Footer />
