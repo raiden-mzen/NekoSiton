@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { supabase } from "../lib/supabaseclient";
+
+import { useEffect } from "react";
+
+
 import { 
   MdEmail, 
   MdLock, 
@@ -51,12 +56,63 @@ const Login: React.FC = () => {
     });
   };
 
-  
+  //////////////
 
-  const handleSubmit = (e: React.FormEvent) => {
+        // ------------------------
+        // SUPABASE
+        // ------------------------ 
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", { ...formData, userType, isLogin });
+  
+    const { email, password, name, phone } = formData;
+  
+    try {
+      if (isLogin) {
+        // ------------------------
+        // LOGIN
+        // ------------------------
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+  
+        if (error) throw error;
+  
+        alert("Login successful!");
+        console.log("User:", data.user);
+  
+      } else {
+        // ------------------------
+        // SIGN UP
+        // ------------------------
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              name,
+              phone,
+              userType, // client or photographer
+            }
+          }
+        });
+  
+        if (error) throw error;
+  
+        alert("Account created successfully! Please check your email to confirm.");
+        console.log("User:", data.user);
+      }
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
+  useEffect(() => {
+    supabase.from("profiles").select("*").then(console.log);
+  }, []);
+  
+  
+  /////////////////////
 
   return (
     <div className="login-container">
