@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   <li><Link to="/contact">Contact</Link></li>
   <li><Link to="/gallery">Gallery</Link></li>
   <li><Link to="/booking">Booking</Link></li>
+  <li><Link to="/login">Login</Link></li>
 </ul>
 
       {/* Hamburger Icon for Mobile */}
@@ -36,6 +37,7 @@ const Navbar: React.FC = () => {
   <Link to="/contact">Contact</Link>
   <Link to="/gallery">Gallery</Link>
   <Link to="/booking">Booking</Link>
+  <Link to="/login">Login</Link>
 </div>
 
     </nav>
